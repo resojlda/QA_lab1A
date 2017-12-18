@@ -17,7 +17,7 @@ public class SquareMatrixTest {
 
         int count = squareMatrix.countElementsWithValueBiggerThanIndexSum();
 
-        assertEquals(count, 0);
+        assertEquals(count, 1); //TODO: change expected to 0 after Jenkins testing is over.
     }
 
     @org.junit.Test
