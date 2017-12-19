@@ -1,10 +1,33 @@
 package main;
 
+import org.junit.Assert;
+
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
 public class SquareMatrixTest {
+    @org.junit.Test(expected = NullPointerException.class)
+    public void testGetMatrix_MatrixIsNull_ReturnsNull() {
+        int size = 2;
+        int[][] matrix = null;
+
+        SquareMatrix squareMatrix = new SquareMatrix(matrix, size);
+        assertTrue(squareMatrix.getMatrix().equals(null));
+    }
+
+    @org.junit.Test
+    public void testGetMatrix_MatrixHasData_ReturnsMatrix() {
+        int size = 2;
+        int[][] matrix = {
+                {0, 0},
+                {0, 0}
+        };
+
+        SquareMatrix squareMatrix = new SquareMatrix(matrix, size);
+        assertTrue(Arrays.equals(squareMatrix.getMatrix(), matrix));
+    }
+
     @org.junit.Test
     public void testCountElements_NoElementsAreBiggerThanIndexCount_ReturnsZero() {
         int size = 2;
@@ -115,5 +138,23 @@ public class SquareMatrixTest {
         SquareMatrix squareMatrix = new SquareMatrix(matrix, size);
 
         assertTrue(Arrays.deepEquals(matrix, squareMatrix.swapRows(k1, k2)));
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void testToString_MatrixIsNull_ThrowsException() {
+        SquareMatrix m = null;
+        m.toString();
+    }
+
+    @org.junit.Test
+    public void testToString_MatrixIsValid_ReturnString() {
+        int size = 2;
+        int[][] matrix = {
+                {5, 5},
+                {5, 5}
+        };
+
+        SquareMatrix squareMatrix = new SquareMatrix(matrix, size);
+        Assert.assertEquals(squareMatrix.toString(), "5\t5\t\n5\t5\t\n");
     }
 }

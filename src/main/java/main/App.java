@@ -9,7 +9,7 @@ public class App
     {
         System.out.print("Input matrix size:");
 
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in, "UTF-8");
 
         int n = in.nextInt();
         int[][] matrix = new int[n][n];
